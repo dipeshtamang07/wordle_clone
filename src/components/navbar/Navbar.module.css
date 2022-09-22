@@ -1,0 +1,15 @@
+
+.navbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.gameTitle {
+    font-family: Helvetica Neue, Ariel, sans-serif;
+    font-size: 2.2em;
+    font-weight: bold;
+}

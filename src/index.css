@@ -1,13 +1,71 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/HelveticaNeue.ttf") format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Ariel, sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.App {
+  outline: none;
+  border: none;
+}
+
+
+/* Letter colors based on their correctiveness to the word */
+.correct {
+  background-color: #6AAA64;
+  color: white;
+}
+.close {
+  background-color: #C9B458;
+  color: white;
+}
+.incorrect {
+  background-color: #787C7E;
+  color: white;
+}
+
+/* Success header */
+
+.success-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-text {
+  color: green;
+}
+
+.play-again-btn {
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  background-color: transparent;
+  margin-inline: 1rem;
+}
+
+.play-again-btn:hover {
+  color: blue;
+  border-color: blue;
 }

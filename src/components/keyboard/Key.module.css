@@ -1,0 +1,17 @@
+
+.key {
+    height: 3rem;
+    width: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d3d6da;
+    border-radius: 4px;
+    font-size: .5em;
+    cursor: pointer;
+}
+
+
+.bigKey {
+    width: 4rem;
+}

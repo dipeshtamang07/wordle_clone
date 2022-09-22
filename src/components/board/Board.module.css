@@ -1,0 +1,19 @@
+.board {
+    padding-bottom: 1rem;
+}
+
+.word {
+    display: flex;
+    gap: .4rem;
+    margin-bottom: .4rem;
+}
+
+.letter {
+    height: 3.5rem;
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    font-size: 1em;
+}
