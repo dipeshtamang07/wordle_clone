@@ -148,7 +148,7 @@ function App() {
     <div className="App" tabIndex={-1} onKeyDown={handleKeyDown} ref={appDivRef}>
       <Navbar />
       {isLoading && <h3>Loading...</h3>}
-      <h3 style={{ color: "white"}}>{correctWord}</h3>
+      {/* <h3 style={{ color: "white"}}>{correctWord}</h3> */}
       {
         answered
         &&
