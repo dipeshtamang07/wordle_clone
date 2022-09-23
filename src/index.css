@@ -50,10 +50,12 @@
   background-color: #6AAA64;
   color: white;
 }
+
 .close {
   background-color: #C9B458;
   color: white;
 }
+
 .incorrect {
   background-color: #787C7E;
   color: white;
@@ -65,6 +67,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-block: 1rem;
 }
 
 .success-text {
@@ -75,6 +78,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-block: 1rem;
 }
 
 .game-over-text {
@@ -95,4 +99,15 @@
 .play-again-btn:hover {
   color: blue;
   border-color: blue;
+}
+
+@media screen and (max-width: 480px) {
+  .key {
+    height: 2.5rem;
+    width: 2rem;
+  }
+
+  .bigKey {
+    width: 3rem;
+  }
 }

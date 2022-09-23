@@ -42,7 +42,7 @@ function Keyboard({ onKeyEntry, keyColorMap }) {
                         .split("")
                         .map(letter => <Key value={letter} key={letter} onKeyEntry={onKeyEntry} colorClass={getColorClass(letter)}/>)
                 }
-                <Key value="Backspace" bigKey onKeyEntry={onKeyEntry}/>
+                <Key value="Backspace" label="Delete" bigKey onKeyEntry={onKeyEntry}/>
             </div>
         </div>
     )

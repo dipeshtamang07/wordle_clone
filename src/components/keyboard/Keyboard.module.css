@@ -5,9 +5,16 @@
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    padding: 2rem 1rem;
 }
 
 .row {
     display: flex;
     gap: .5rem;
+}
+
+@media screen and (max-width: 480px) {
+    .row {
+        gap: .3rem;
+    }
 }
