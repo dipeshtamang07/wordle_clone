@@ -37,7 +37,13 @@ function App() {
   const [pointer, setPointer] = useState({ wordIndex: 0, letterIndex: 0 });
   const [correctWord, setCorrectWord] = useState("");
   const [answered, setAnswered] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [keyColorMap, setKeyColorMap] = useState({
+    correct: [],
+    close: [],
+    incorrect: []
+  })
 
   const appDivRef = useRef();
 
@@ -54,29 +60,34 @@ function App() {
       return;
     }
     const classes = [];
+    const newKeyColorMap = {...keyColorMap};
     for (let i = 0; i < inputWord.length; i++) {
       const inputLetter = inputWord[i];
       const regex = new RegExp(inputLetter, "g")
       let countOfCharInCorrectWord = correctWord.match(regex)?.length || 0;
       let countOfCharInInputWord = inputWord.match(regex)?.length || 0;
       let countOfCharSoFar = inputWord.slice(0, i + 1).match(regex)?.length || 0;
-      console.log({ inputLetter, countOfCharSoFar, inputWord: inputWord.slice(0, i + 1)})
-      // console.log({ inputLetter, countOfCharInCorrectWord, countOfCharInInputWord })
+      // console.log({ inputLetter, countOfCharSoFar, inputWord: inputWord.slice(0, i + 1)});
+      // console.log({ inputLetter, countOfCharInCorrectWord, countOfCharInInputWord });
       if (inputLetter === correctWord[i]) {
         // console.log("CORRECT", correctWord[i])
         classes.push(LETTER_CLASSES.CORRECT);
+        newKeyColorMap.correct.push(inputLetter);
         if (countOfCharInInputWord > countOfCharInCorrectWord) {
           classes[inputWord.indexOf(inputLetter)] = LETTER_CLASSES.INCORRECT;
         }
       } else if (correctWord.includes(inputLetter) && countOfCharSoFar <= countOfCharInCorrectWord) {
-        classes.push(LETTER_CLASSES.CLOSE)
+        classes.push(LETTER_CLASSES.CLOSE);
+        newKeyColorMap.close.push(inputLetter);
       } else {
-        classes.push(LETTER_CLASSES.INCORRECT)
+        classes.push(LETTER_CLASSES.INCORRECT);
+        newKeyColorMap.incorrect.push(inputLetter);
       }
     }
     const newclassMatrix = [...classMatrix];
     newclassMatrix[pointer.wordIndex] = classes;
     setClassMatrix(newclassMatrix);
+    setKeyColorMap(newKeyColorMap);
     if (inputWord === correctWord) {
       setAnswered(true);
       return;
@@ -84,7 +95,8 @@ function App() {
 
     // Game Over
     if (pointer.wordIndex === 5) {
-      alert("Game Over, the word was " + correctWord);
+      // alert("Game Over, the word was " + correctWord);
+      setGameOver(true);
       return;
     }
 
@@ -131,6 +143,8 @@ function App() {
     setAnswered(false);
     appDivRef.current.focus();
     setCorrectWord(wordBank[Math.floor(Math.random() * wordBank.length)]);
+    setKeyColorMap({ correct: [], close: [], incorrect: [] });
+    setGameOver(false);
   }
 
   useEffect(() => {
@@ -157,9 +171,17 @@ function App() {
           <button onClick={restartGame} className="play-again-btn">Play Again</button>
         </div>
       }
+      {
+        gameOver
+        &&
+        <div className="game-over-div">
+          <h3 className="game-over-text">Game Over, The word was "{correctWord}"</h3>
+          <button onClick={restartGame} className="play-again-btn">Play Again</button>
+        </div>
+      }
       <main className="main">
         <Board wordsMatrix={wordsMatrix} classMatrix={classMatrix} />
-        <Keyboard onKeyEntry={onKeyEntry} />
+        <Keyboard onKeyEntry={onKeyEntry} keyColorMap={keyColorMap}/>
       </main>
     </div>
   );

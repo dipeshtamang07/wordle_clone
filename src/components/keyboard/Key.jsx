@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from "./Key.module.css"
+// import classes from "./Key.module.css"
 
-function Key({ value, bigKey, onKeyEntry }) {
+function Key({ value, bigKey, onKeyEntry, colorClass }) {
   return (
-    <div onClick={() => onKeyEntry(value)} className={bigKey ? `${classes.key} ${classes.bigKey}` : classes.key}>
+    <div onClick={() => onKeyEntry(value)} className={bigKey ? `key bigKey` : `key ${colorClass}`}>
         {value}
     </div>
   )

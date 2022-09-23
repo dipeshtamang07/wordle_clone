@@ -27,6 +27,23 @@
   border: none;
 }
 
+/* Generic key */
+.key {
+  height: 3rem;
+  width: 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d6da;
+  border-radius: 4px;
+  font-size: .5em;
+  cursor: pointer;
+}
+
+.bigKey {
+  width: 4rem;
+}
+
 
 /* Letter colors based on their correctiveness to the word */
 .correct {
@@ -52,6 +69,16 @@
 
 .success-text {
   color: green;
+}
+
+.game-over-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-text {
+  color: red;
 }
 
 .play-again-btn {
